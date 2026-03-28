@@ -1,0 +1,91 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <style>
+        body {
+            background-image: url("{% static 'DiabetesPrediction/images/diabetes prediction.png' %}");
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        p.instructions {
+            font-size: 18px;
+            margin-bottom: 20px;
+            max-width: 700px;
+            line-height: 1.6;
+        }
+
+        div::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 1;
+        }
+
+        input[type="submit"] {
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            font-size: 16px;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <h1>WELCOME TO DIABETES PREDICTION SYSTEM</h1>
+    <p class="instructions">Click the button below to enter your health information and check your diabetes risk.</p>
+    <form action="{% url 'predict' %}">
+        <input type="submit" value="Let's get started">
+    </form>
+    <p class="footer">2026 Diabetes Prediction System | Developed by Faysal Mahmud Prem</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,382 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Prediction</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --medical-blue: #007bff;
+            --success-green: #28a745;
+            --text-dark: #17324d;
+            --text-soft: #5c6f82;
+            --white-glass: rgba(255, 255, 255, 0.85);
+            --white-strong: rgba(255, 255, 255, 0.92);
+            --border-soft: rgba(255, 255, 255, 0.35);
+            --input-border: #e0e0e0;
+            --danger-bg: rgba(255, 224, 224, 0.92);
+            --danger-text: #a92e2e;
+            --success-bg: rgba(227, 247, 232, 0.92);
+            --success-text: #1f7a36;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            color: #ffffff;
+            background:
+                linear-gradient(rgba(8, 22, 38, 0.78), rgba(8, 22, 38, 0.72)),
+                url("{% static 'DiabetesPrediction/images/diabetes prediction.png' %}") center/cover fixed no-repeat;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 28px;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        .brand {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+
+        .nav-note {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.88);
+        }
+
+        .page-shell {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 40px 20px 28px;
+        }
+
+        .hero-copy {
+            max-width: 760px;
+            margin: 0 auto 24px;
+            text-align: center;
+        }
+
+        .hero-copy h1 {
+            margin: 0 0 10px;
+            font-size: clamp(32px, 4vw, 46px);
+        }
+
+        .hero-copy p {
+            margin: 0;
+            font-size: 17px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .glass-card {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 30px;
+            border-radius: 24px;
+            background: var(--white-glass);
+            border: 1px solid var(--border-soft);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 24px 50px rgba(0, 0, 0, 0.22);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .section {
+            background: var(--white-strong);
+            border-radius: 18px;
+            padding: 22px 20px;
+        }
+
+        .section h2 {
+            margin: 0 0 18px;
+            color: var(--medical-blue);
+            font-size: 22px;
+        }
+
+        .field {
+            margin-bottom: 16px;
+        }
+
+        .field:last-child {
+            margin-bottom: 0;
+        }
+
+        .field label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 6px;
+            color: var(--text-dark);
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .field label i {
+            color: var(--medical-blue);
+            width: 16px;
+            height: 16px;
+        }
+
+        .field input {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid var(--input-border);
+            border-radius: 12px;
+            font-size: 15px;
+            color: var(--text-dark);
+            background: rgba(255, 255, 255, 0.95);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .field input:focus {
+            outline: none;
+            border-color: var(--medical-blue);
+            box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.14);
+        }
+
+        .help-text {
+            margin-top: 6px;
+            color: var(--text-soft);
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .submit-wrap {
+            margin-top: 24px;
+            text-align: center;
+        }
+
+        .submit-btn {
+            min-width: 220px;
+            padding: 14px 26px;
+            border: none;
+            border-radius: 14px;
+            background: linear-gradient(45deg, #007bff, #00d4ff);
+            color: #ffffff;
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 12px 24px rgba(0, 123, 255, 0.24);
+            animation: pulse 2.2s ease-in-out infinite;
+        }
+
+        .submit-btn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 16px 28px rgba(0, 123, 255, 0.3);
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 12px 24px rgba(0, 123, 255, 0.22);
+            }
+            50% {
+                transform: scale(1.02);
+                box-shadow: 0 16px 28px rgba(0, 212, 255, 0.28);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 12px 24px rgba(0, 123, 255, 0.22);
+            }
+        }
+
+        .result-box {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            margin-top: 24px;
+            padding: 18px 20px;
+            border-radius: 16px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .result-box.positive {
+            background: var(--danger-bg);
+            color: var(--danger-text);
+        }
+
+        .result-box.negative {
+            background: var(--success-bg);
+            color: var(--success-text);
+        }
+
+        .result-icon {
+            font-size: 24px;
+            line-height: 1;
+        }
+
+        .result-content strong {
+            display: block;
+            margin-bottom: 4px;
+            color: #17324d;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 0.05em;
+        }
+
+        .page-footer {
+            margin: 28px 0 0;
+            text-align: center;
+            color: #c8d0d8;
+            font-size: 14px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .navbar {
+                padding: 14px 16px;
+                flex-direction: column;
+                gap: 6px;
+                text-align: center;
+            }
+
+            .glass-card {
+                padding: 18px;
+            }
+
+            .section {
+                padding: 18px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="brand">Diabetes Prediction System</div>
+        <div class="nav-note">Simple screening support for general users</div>
+    </header>
+
+    <main class="page-shell">
+        <section class="hero-copy">
+            <h1>Check Your Diabetes Risk</h1>
+            <p>
+                Enter your personal and clinical details below. This tool offers a quick risk estimate
+                and should be used as supportive guidance, not as a final medical diagnosis.
+            </p>
+        </section>
+
+        <section class="glass-card">
+            <form action="result" method="post">
+                {% csrf_token %}
+                <div class="form-grid">
+                    <div class="section">
+                        <h2>Personal Info</h2>
+
+                        <div class="field">
+                            <label for="n8"><i data-lucide="calendar-days"></i>Age</label>
+                            <input id="n8" type="text" name="n8" placeholder="Example: 33">
+                            <div class="help-text">Enter your age in years.</div>
+                        </div>
+
+                        <div class="field">
+                            <label for="n6"><i data-lucide="scale"></i>BMI</label>
+                            <input id="n6" type="text" name="n6" placeholder="Example: 25.5">
+                            <div class="help-text">BMI means Body Mass Index, a measure based on height and weight.</div>
+                        </div>
+
+                        <div class="field">
+                            <label for="n1"><i data-lucide="baby"></i>Pregnancies</label>
+                            <input id="n1" type="text" name="n1" placeholder="Example: 0, 1, or 2">
+                            <div class="help-text">Enter the number of times you have been pregnant.</div>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <h2>Clinical Readings</h2>
+
+                        <div class="field">
+                            <label for="n2"><i data-lucide="droplets"></i>Glucose</label>
+                            <input id="n2" type="text" name="n2" placeholder="Example: 120">
+                            <div class="help-text">Blood sugar reading from your test report.</div>
+                        </div>
+
+                        <div class="field">
+                            <label for="n3"><i data-lucide="heart-pulse"></i>Blood Pressure</label>
+                            <input id="n3" type="text" name="n3" placeholder="Example: 70">
+                            <div class="help-text">Enter the diastolic blood pressure reading.</div>
+                        </div>
+
+                        <div class="field">
+                            <label for="n4"><i data-lucide="ruler"></i>Skin Thickness</label>
+                            <input id="n4" type="text" name="n4" placeholder="Example: 20">
+                            <div class="help-text">Usually measured from a skin fold test.</div>
+                        </div>
+
+                        <div class="field">
+                            <label for="n5"><i data-lucide="activity"></i>Insulin</label>
+                            <input id="n5" type="text" name="n5" placeholder="Example: 85">
+                            <div class="help-text">Enter the insulin level from your report.</div>
+                        </div>
+
+                        <div class="field">
+                            <label for="n7"><i data-lucide="users"></i>Diabetes Pedigree Function</label>
+                            <input id="n7" type="text" name="n7" placeholder="Example: 0.50">
+                            <div class="help-text">A score based on family history of diabetes.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="submit-wrap">
+                    <input class="submit-btn" type="submit" value="Predict Risk">
+                </div>
+            </form>
+
+            {% if result2 %}
+            <div class="result-box {% if result2 == 'SUSPICIOUS DIABETES RISK POSITIVE' or 'Error:' in result2 %}positive{% else %}negative{% endif %}">
+                <div class="result-icon">
+                    {% if result2 == 'SUSPICIOUS DIABETES RISK POSITIVE' or 'Error:' in result2 %}
+                    Warning
+                    {% else %}
+                    Check
+                    {% endif %}
+                </div>
+                <div class="result-content">
+                    <strong>Prediction Result</strong>
+                    {{ result2 }}
+                </div>
+            </div>
+            {% endif %}
+        </section>
+
+        <footer class="page-footer">
+            &copy; 2026 Diabetes Prediction System | Developed by Faysal Mahmud Prem
+        </footer>
+    </main>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
