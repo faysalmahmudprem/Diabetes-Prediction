@@ -9,6 +9,11 @@
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 ![Contributions Welcome](https://img.shields.io/badge/Contributions-Welcome-brightgreen.svg)
 
+
+ **[Live Demo →](https://diabetes-prediction-ml-4ves.onrender.com/)**
+
+
+Done. ✅
 ---
 
 ## 🧠 What Is This Project?
