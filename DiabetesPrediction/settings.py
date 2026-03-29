@@ -19,21 +19,27 @@ SECRET_KEY = os.getenv(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG", "True").lower() == "true"
 
-ALLOWED_HOSTS = [
-    host.strip()
-    for host in os.getenv(
-        "ALLOWED_HOSTS",
-        "diabetes-prediction-ml-4ves.onrender.com,127.0.0.1,localhost",
-    ).split(",")
-    if host.strip()
-]
+#for testing comment out those 
+# ALLOWED_HOSTS = [
+#     host.strip()
+#     for host in os.getenv(
+#         "ALLOWED_HOSTS",
+#         "diabetes-prediction-ml-4ves.onrender.com,127.0.0.1,localhost",
+#     ).split(",")
+#     if host.strip()
+# ]
+
+# CSRF_TRUSTED_ORIGINS = [
+#     origin.strip()
+#     for origin in os.getenv("CSRF_TRUSTED_ORIGINS", "").split(",")
+#     if origin.strip()
+# ]
+
+ALLOWED_HOSTS = ["*"]
 
 CSRF_TRUSTED_ORIGINS = [
-    origin.strip()
-    for origin in os.getenv("CSRF_TRUSTED_ORIGINS", "").split(",")
-    if origin.strip()
+    "https://diabetes-prediction-ml-4ves.onrender.com"
 ]
-
 
 # Application definition
 
