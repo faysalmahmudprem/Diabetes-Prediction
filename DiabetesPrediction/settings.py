@@ -23,7 +23,7 @@ ALLOWED_HOSTS = [
     host.strip()
     for host in os.getenv(
         "ALLOWED_HOSTS",
-        "diabetes-prediction-faysal.onrender.com",
+        "diabetes-prediction-133e.onrender.com",
         "127.0.0.1,localhost,testserver",
     ).split(",")
     if host.strip()
