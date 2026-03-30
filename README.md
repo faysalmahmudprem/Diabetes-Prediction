@@ -266,7 +266,7 @@ It is **not** a medical device and should **never** be used to replace professio
 **Faysal Mahmud Prem**
 (CSE Graduate | Software Engineer | ML Enthusiast)
 
-- 🌐 Portfolio: [faysalmahmudprem.com](https://faysalmahmudprem.netlify.com)
+- 🌐 Portfolio: [faysalmahmudprem.com](https://faysalmahmudprem.netlify.app)
 - 💻 GitHub: [@faysalmahmudprem](https://github.com/faysalmahmudprem)
 ---
 
