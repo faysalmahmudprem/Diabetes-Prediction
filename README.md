@@ -1,19 +1,16 @@
 # 🩺 Diabetes Prediction System
 
-> An AI-powered web application that predicts diabetes risk based on real medical data — built with Django and Machine Learning.
+> A Django web application that predicts diabetes risk from health inputs using a trained Scikit-Learn machine learning model.
 
 ![Python](https://img.shields.io/badge/Python-3.13-blue.svg)
-![Django](https://img.shields.io/badge/Django-6.0.3-green.svg)
-![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-1.8.0-orange.svg)
+![Django](https://img.shields.io/badge/Django-5.x-green.svg)
+![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-1.4.x-orange.svg)
 ![Status](https://img.shields.io/badge/Status-Live-brightgreen.svg)
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 ![Contributions Welcome](https://img.shields.io/badge/Contributions-Welcome-brightgreen.svg)
 
+**[Live Demo →](https://diabetes-prediction-ml-4ves.onrender.com/)**
 
- **[Live Demo →](https://diabetes-prediction-ml-4ves.onrender.com/)**
-
-
-Done. ✅
 ---
 
 ## 🧠 What Is This Project?
@@ -30,7 +27,7 @@ It was built as an academic project to demonstrate how data science and web deve
 
 | Feature | Description |
 |--------|-------------|
-| 🤖 ML-Powered Prediction | Trained Scikit-Learn model analyzes 8 health metrics to assess diabetes risk |
+| 🤖 ML-Powered Prediction | Ensemble model (Random Forest + Logistic Regression) analyzes 8 health metrics to assess diabetes risk |
 | 🎨 Glassmorphism UI | Modern frosted-glass design with a clean two-column form layout |
 | 📱 Fully Responsive | Works seamlessly on desktop, tablet, and mobile |
 | 💡 Beginner-Friendly Form | Each medical term includes a plain-English description so anyone can use it |
@@ -54,8 +51,6 @@ It was built as an academic project to demonstrate how data science and web deve
 <img width="1919" height="911" alt="image" src="https://github.com/user-attachments/assets/128a85c8-92ea-45a5-83dc-a425cb5cbcf3" />
 <img width="1919" height="910" alt="image" src="https://github.com/user-attachments/assets/7f6621b5-f7e4-4f19-b3a3-bee3844a77ec" />
 
-
-
 ---
 
 ## 📋 How the Prediction Works
@@ -73,7 +68,7 @@ The ML model was trained on the **Pima Indians Diabetes Dataset** and evaluates 
 | 7 | **Diabetes Pedigree Function** | A score that reflects genetic/family history of diabetes |
 | 8 | **Age** | Patient's age in years |
 
-> **How it works under the hood:** The values are passed to a pre-trained classification model (e.g. Random Forest / Logistic Regression), which outputs either **Diabetic** or **Non-Diabetic** along with a confidence level.
+> **How it works under the hood:** The values are passed to an ensemble of trained classifiers (Random Forest + Logistic Regression), which outputs either **Diabetic** or **Non-Diabetic** along with a confidence level.
 
 ---
 
@@ -90,8 +85,8 @@ Follow these steps to run the project on your own machine.
 
 ### Step 1 — Clone the Repository
 ```bash
-git clone https://github.com/faysalmahmudprem/Diabetes-Prediction.git
-cd Diabetes-Prediction
+git clone https://github.com/faysalmahmudprem/diabetes-prediction-web.git
+cd diabetes-prediction-web
 ```
 
 ### Step 2 — Create a Virtual Environment
@@ -142,7 +137,7 @@ You should see the prediction form ready to use. 🎉
 
 ## 📁 Project Structure
 ```
-Diabetes-Prediction/
+diabetes-prediction-web/
 │
 ├── predictor/              # Core Django app
 │   ├── views.py            # Handles form input and prediction logic
@@ -155,8 +150,6 @@ Diabetes-Prediction/
 └── manage.py               # Django project entry point
 ```
 
-> ⚠️ *Folder names may vary slightly — update this section to match your actual structure.*
-
 ---
 
 ## 🔮 Future Plans
@@ -164,7 +157,7 @@ Diabetes-Prediction/
 The current version is a working proof of concept. Here's what's planned for future iterations:
 
 ### 🧬 Model Improvements
-- [ ] Experiment with ensemble methods (XGBoost, Random Forest tuning) to push accuracy above 85%
+- [ ] Experiment with XGBoost and further ensemble tuning to push accuracy above 85%
 - [ ] Add confidence percentage to results (e.g. "72% likelihood of diabetes")
 - [ ] Display which input factors contributed most to the prediction (feature importance)
 - [ ] Retrain on larger, more diverse datasets to reduce bias
@@ -200,8 +193,8 @@ Click the `Fork` button at the top right of this page.
 
 **2. Clone your fork**
 ```bash
-git clone https://github.com/YOUR_USERNAME/Diabetes-Prediction.git
-cd Diabetes-Prediction
+git clone https://github.com/YOUR_USERNAME/diabetes-prediction-web.git
+cd diabetes-prediction-web
 ```
 
 **3. Create a new branch**
@@ -232,7 +225,7 @@ Then go to GitHub and open a Pull Request against the `main` branch. Describe wh
 - Add unit tests for the prediction logic
 - Translate the UI into Bengali
 - Write a blog post or tutorial about this project
-- Report bugs or suggest features via [GitHub Issues](https://github.com/faysalmahmudprem/Diabetes-Prediction/issues)
+- Report bugs or suggest features via [GitHub Issues](https://github.com/faysalmahmudprem/diabetes-prediction-web/issues)
 
 ---
 
@@ -263,11 +256,12 @@ It is **not** a medical device and should **never** be used to replace professio
 
 ## 👤 Author
 
-**Faysal Mahmud Prem**
+**Faysal Mahmud Prem**  
 (CSE Graduate | Software Engineer | ML Enthusiast)
 
 - 🌐 Portfolio: [faysalmahmudprem.com](https://faysalmahmudprem.netlify.app)
 - 💻 GitHub: [@faysalmahmudprem](https://github.com/faysalmahmudprem)
+
 ---
 
 *Developed with ❤️ as part of a CSE academic project — combining healthcare awareness with modern web technology.*
